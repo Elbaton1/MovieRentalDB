@@ -18,7 +18,7 @@ async function createTable() {
     await pool.query(`
       CREATE TABLE IF NOT EXISTS movies (
         movie_id SERIAL PRIMARY KEY,
-        title VARCHAR(255),
+        title VARCHAR(255) NOT NULL,
         release_year INTEGER,
         genre VARCHAR(100),
         director VARCHAR(255)
@@ -29,9 +29,9 @@ async function createTable() {
     await pool.query(`
       CREATE TABLE IF NOT EXISTS customers (
         customer_id SERIAL PRIMARY KEY,
-        first_name VARCHAR(100),
-        last_name VARCHAR(100),
-        email VARCHAR(255) UNIQUE,
+        first_name VARCHAR(100) NOT NULL,
+        last_name VARCHAR(100) NOT NULL,
+        email VARCHAR(255) UNIQUE NOT NULL,
         phone_number VARCHAR(20)
       );
     `);
@@ -75,6 +75,55 @@ async function insertMovie(title, year, genre, director) {
 }
 
 /**
+ * Inserts a new customer into the Customers table.
+ *
+ * @param {string} firstName First name of the customer
+ * @param {string} lastName Last name of the customer
+ * @param {string} email Email address of the customer
+ * @param {string} phoneNumber Phone number of the customer
+ */
+async function insertCustomer(firstName, lastName, email, phoneNumber) {
+  try {
+    await pool.query(
+      `INSERT INTO customers (first_name, last_name, email, phone_number)
+       VALUES ($1, $2, $3, $4);`,
+      [firstName, lastName, email, phoneNumber]
+    );
+    console.log(`Customer "${firstName} ${lastName}" inserted successfully.`);
+  } catch (err) {
+    console.error("Error inserting customer:", err);
+  }
+}
+
+/**
+ * Inserts a new rental into the Rentals table.
+ *
+ * @param {number} customerId ID of the customer renting the movie
+ * @param {number} movieId ID of the movie being rented
+ * @param {string} [rentalDate] (Optional) Rental date in YYYY-MM-DD format
+ * @param {string} [returnDate] (Optional) Return date in YYYY-MM-DD format
+ */
+async function insertRental(
+  customerId,
+  movieId,
+  rentalDate = null,
+  returnDate = null
+) {
+  try {
+    const query = `
+      INSERT INTO rentals (customer_id, movie_id, rental_date, return_date)
+      VALUES ($1, $2, $3, $4);
+    `;
+    await pool.query(query, [customerId, movieId, rentalDate, returnDate]);
+    console.log(
+      `Rental for Customer ID ${customerId} and Movie ID ${movieId} inserted successfully.`
+    );
+  } catch (err) {
+    console.error("Error inserting rental:", err);
+  }
+}
+
+/**
  * Prints all movies in the database to the console
  */
 async function displayMovies() {
@@ -92,6 +141,70 @@ async function displayMovies() {
 }
 
 /**
+ * Prints all customers in the database to the console
+ */
+async function displayCustomers() {
+  try {
+    const res = await pool.query("SELECT * FROM customers;");
+    console.log("Customers in the database:");
+    res.rows.forEach((customer) => {
+      console.log(
+        `ID: ${customer.customer_id}, Name: ${customer.first_name} ${customer.last_name}, Email: ${customer.email}, Phone: ${customer.phone_number}`
+      );
+    });
+  } catch (err) {
+    console.error("Error fetching customers:", err);
+  }
+}
+
+/**
+ * Prints all customer emails in the database to the console
+ */
+async function displayEmails() {
+  try {
+    const res = await pool.query("SELECT email FROM customers;");
+    console.log("Customer Emails:");
+    res.rows.forEach((row) => {
+      console.log(row.email);
+    });
+  } catch (err) {
+    console.error("Error fetching emails:", err);
+  }
+}
+
+/**
+ * Prints all rentals in the database to the console
+ */
+async function displayRentals() {
+  try {
+    const res = await pool.query(`
+      SELECT 
+        rentals.rental_id, 
+        customers.first_name || ' ' || customers.last_name AS customer_name,
+        movies.title AS movie_title,
+        rentals.rental_date,
+        rentals.return_date
+      FROM rentals
+      JOIN customers ON rentals.customer_id = customers.customer_id
+      JOIN movies ON rentals.movie_id = movies.movie_id
+      ORDER BY rentals.rental_date DESC;
+    `);
+    console.log("Rentals in the database:");
+    res.rows.forEach((rental) => {
+      console.log(
+        `Rental ID: ${rental.rental_id}, Customer: ${
+          rental.customer_name
+        }, Movie: ${rental.movie_title}, Rented On: ${
+          rental.rental_date
+        }, Returned On: ${rental.return_date || "Not Returned"}`
+      );
+    });
+  } catch (err) {
+    console.error("Error fetching rentals:", err);
+  }
+}
+
+/**
  * Updates a customer's email address.
  *
  * @param {number} customerId ID of the customer
@@ -99,11 +212,15 @@ async function displayMovies() {
  */
 async function updateCustomerEmail(customerId, newEmail) {
   try {
-    await pool.query(
+    const res = await pool.query(
       `UPDATE customers SET email = $1 WHERE customer_id = $2;`,
       [newEmail, customerId]
     );
-    console.log(`Customer ID ${customerId}'s email updated to ${newEmail}.`);
+    if (res.rowCount === 0) {
+      console.log(`No customer found with ID ${customerId}.`);
+    } else {
+      console.log(`Customer ID ${customerId}'s email updated to ${newEmail}.`);
+    }
   } catch (err) {
     console.error("Error updating customer email:", err);
   }
@@ -116,14 +233,39 @@ async function updateCustomerEmail(customerId, newEmail) {
  */
 async function removeCustomer(customerId) {
   try {
-    await pool.query(`DELETE FROM customers WHERE customer_id = $1;`, [
-      customerId,
-    ]);
-    console.log(
-      `Customer ID ${customerId} and their rental history have been removed.`
+    const res = await pool.query(
+      `DELETE FROM customers WHERE customer_id = $1;`,
+      [customerId]
     );
+    if (res.rowCount === 0) {
+      console.log(`No customer found with ID ${customerId}.`);
+    } else {
+      console.log(
+        `Customer ID ${customerId} and their rental history have been removed.`
+      );
+    }
   } catch (err) {
     console.error("Error removing customer:", err);
+  }
+}
+
+/**
+ * Removes a rental from the database.
+ *
+ * @param {number} rentalId ID of the rental to remove
+ */
+async function removeRental(rentalId) {
+  try {
+    const res = await pool.query(`DELETE FROM rentals WHERE rental_id = $1;`, [
+      rentalId,
+    ]);
+    if (res.rowCount === 0) {
+      console.log(`No rental found with ID ${rentalId}.`);
+    } else {
+      console.log(`Rental ID ${rentalId} has been removed.`);
+    }
+  } catch (err) {
+    console.error("Error removing rental:", err);
   }
 }
 
@@ -133,9 +275,22 @@ async function removeCustomer(customerId) {
 function printHelp() {
   console.log("Usage:");
   console.log("  insert <title> <year> <genre> <director> - Insert a movie");
+  console.log(
+    "  insert-customer <first_name> <last_name> <email> <phone_number> - Insert a customer"
+  );
+  console.log(
+    "  insert-rental <customer_id> <movie_id> [rental_date] [return_date] - Insert a rental"
+  );
   console.log("  show - Show all movies");
+  console.log("  show-customers - Show all customers");
+  console.log("  show-emails - Show all customer emails");
+  console.log("  show-rentals - Show all rentals");
   console.log("  update <customer_id> <new_email> - Update a customer's email");
   console.log("  remove <customer_id> - Remove a customer from the database");
+  console.log(
+    "  remove-rental <rental_id> - Remove a rental from the database"
+  );
+  console.log("  help - Show this help message");
 }
 
 /**
@@ -145,7 +300,9 @@ async function runCLI() {
   await createTable();
 
   const args = process.argv.slice(2); // Capture command-line arguments
-  switch (args[0]) {
+  const command = args[0];
+
+  switch (command) {
     case "insert":
       if (args.length !== 5) {
         printHelp();
@@ -153,8 +310,54 @@ async function runCLI() {
       }
       await insertMovie(args[1], parseInt(args[2]), args[3], args[4]);
       break;
+    case "insert-customer":
+      if (args.length !== 5) {
+        printHelp();
+        return;
+      }
+      await insertCustomer(args[1], args[2], args[3], args[4]);
+      break;
+    case "insert-rental":
+      if (args.length < 3 || args.length > 5) {
+        printHelp();
+        return;
+      }
+      const rentalDate = args[3] || null;
+      const returnDate = args[4] || null;
+      await insertRental(
+        parseInt(args[1]),
+        parseInt(args[2]),
+        rentalDate,
+        returnDate
+      );
+      break;
     case "show":
+      if (args.length !== 1) {
+        printHelp();
+        return;
+      }
       await displayMovies();
+      break;
+    case "show-customers":
+      if (args.length !== 1) {
+        printHelp();
+        return;
+      }
+      await displayCustomers();
+      break;
+    case "show-emails":
+      if (args.length !== 1) {
+        printHelp();
+        return;
+      }
+      await displayEmails();
+      break;
+    case "show-rentals":
+      if (args.length !== 1) {
+        printHelp();
+        return;
+      }
+      await displayRentals();
       break;
     case "update":
       if (args.length !== 3) {
@@ -169,6 +372,16 @@ async function runCLI() {
         return;
       }
       await removeCustomer(parseInt(args[1]));
+      break;
+    case "remove-rental":
+      if (args.length !== 2) {
+        printHelp();
+        return;
+      }
+      await removeRental(parseInt(args[1]));
+      break;
+    case "help":
+      printHelp();
       break;
     default:
       printHelp();
