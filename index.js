@@ -1,12 +1,11 @@
 const { Pool } = require("pg");
 
-// PostgreSQL connection configuration
 const pool = new Pool({
-  user: "movie_user", // Replace with your PostgreSQL username
+  user: "movie_user",
   host: "localhost",
-  database: "superhero_movie_rental", // Replace with your database name
-  password: "5348", // Replace with your PostgreSQL password
-  port: 5432, // Default PostgreSQL port
+  database: "superhero_movie_rental",
+  password: "5348",
+  port: 5432,
 });
 
 /**
@@ -56,13 +55,14 @@ async function createTable() {
 /**
  * Inserts a new movie into the Movies table.
  *
- * @param {string} title Title of the movie
- * @param {number} year Year the movie was released
- * @param {string} genre Genre of the movie
- * @param {string} director Director of the movie
+ * @param {string} title
+ * @param {number} year
+ * @param {string} genre
+ * @param {string} director
  */
 async function insertMovie(title, year, genre, director) {
   try {
+    // Insert a new movie record into the movies table
     await pool.query(
       `INSERT INTO movies (title, release_year, genre, director)
        VALUES ($1, $2, $3, $4);`,
@@ -77,13 +77,14 @@ async function insertMovie(title, year, genre, director) {
 /**
  * Inserts a new customer into the Customers table.
  *
- * @param {string} firstName First name of the customer
- * @param {string} lastName Last name of the customer
- * @param {string} email Email address of the customer
- * @param {string} phoneNumber Phone number of the customer
+ * @param {string} firstName
+ * @param {string} lastName
+ * @param {string} email
+ * @param {string} phoneNumber
  */
 async function insertCustomer(firstName, lastName, email, phoneNumber) {
   try {
+    // Insert a new customer record into the customers table
     await pool.query(
       `INSERT INTO customers (first_name, last_name, email, phone_number)
        VALUES ($1, $2, $3, $4);`,
@@ -100,8 +101,8 @@ async function insertCustomer(firstName, lastName, email, phoneNumber) {
  *
  * @param {number} customerId ID of the customer renting the movie
  * @param {number} movieId ID of the movie being rented
- * @param {string} [rentalDate] (Optional) Rental date in YYYY-MM-DD format
- * @param {string} [returnDate] (Optional) Return date in YYYY-MM-DD format
+ * @param {string} [rentalDate]  Rental date in YYYY-MM-DD format
+ * @param {string} [returnDate]  Return date in YYYY-MM-DD format
  */
 async function insertRental(
   customerId,
@@ -114,6 +115,7 @@ async function insertRental(
       INSERT INTO rentals (customer_id, movie_id, rental_date, return_date)
       VALUES ($1, $2, $3, $4);
     `;
+    // Insert a new rental record into the rentals table
     await pool.query(query, [customerId, movieId, rentalDate, returnDate]);
     console.log(
       `Rental for Customer ID ${customerId} and Movie ID ${movieId} inserted successfully.`
@@ -128,6 +130,7 @@ async function insertRental(
  */
 async function displayMovies() {
   try {
+    // Retrieve all movies from the movies table
     const res = await pool.query("SELECT * FROM movies;");
     console.log("Movies in the database:");
     res.rows.forEach((movie) => {
@@ -145,8 +148,10 @@ async function displayMovies() {
  */
 async function displayCustomers() {
   try {
+    // Retrieve all customers from the customers table
     const res = await pool.query("SELECT * FROM customers;");
     console.log("Customers in the database:");
+    // Loop through each customer and display their details
     res.rows.forEach((customer) => {
       console.log(
         `ID: ${customer.customer_id}, Name: ${customer.first_name} ${customer.last_name}, Email: ${customer.email}, Phone: ${customer.phone_number}`
@@ -162,8 +167,10 @@ async function displayCustomers() {
  */
 async function displayEmails() {
   try {
+    // Retrieve all emails from the customers table
     const res = await pool.query("SELECT email FROM customers;");
     console.log("Customer Emails:");
+    // Loop through each email and display it
     res.rows.forEach((row) => {
       console.log(row.email);
     });
@@ -177,6 +184,7 @@ async function displayEmails() {
  */
 async function displayRentals() {
   try {
+    // all rentals along with customer and movie details
     const res = await pool.query(`
       SELECT 
         rentals.rental_id, 
@@ -190,6 +198,7 @@ async function displayRentals() {
       ORDER BY rentals.rental_date DESC;
     `);
     console.log("Rentals in the database:");
+    // Loop through each rental and display its details
     res.rows.forEach((rental) => {
       console.log(
         `Rental ID: ${rental.rental_id}, Customer: ${
@@ -212,6 +221,7 @@ async function displayRentals() {
  */
 async function updateCustomerEmail(customerId, newEmail) {
   try {
+    // Update the customer's email in the customers table
     const res = await pool.query(
       `UPDATE customers SET email = $1 WHERE customer_id = $2;`,
       [newEmail, customerId]
@@ -229,10 +239,11 @@ async function updateCustomerEmail(customerId, newEmail) {
 /**
  * Removes a customer from the database along with their rental history.
  *
- * @param {number} customerId ID of the customer to remove
+ * @param {number} customerId
  */
 async function removeCustomer(customerId) {
   try {
+    // Delete the customer record from the customers table
     const res = await pool.query(
       `DELETE FROM customers WHERE customer_id = $1;`,
       [customerId]
@@ -256,6 +267,7 @@ async function removeCustomer(customerId) {
  */
 async function removeRental(rentalId) {
   try {
+    // Delete the rental record from the rentals table
     const res = await pool.query(`DELETE FROM rentals WHERE rental_id = $1;`, [
       rentalId,
     ]);
@@ -273,6 +285,7 @@ async function removeRental(rentalId) {
  * Prints a help message to the console
  */
 function printHelp() {
+  // Display instructions for the CLI
   console.log("Usage:");
   console.log("  insert <title> <year> <genre> <director> - Insert a movie");
   console.log(
@@ -297,10 +310,10 @@ function printHelp() {
  * Runs our CLI app to manage the movie rentals database
  */
 async function runCLI() {
-  await createTable();
+  await createTable(); // Ensure tables are created before proceeding
 
   const args = process.argv.slice(2); // Capture command-line arguments
-  const command = args[0];
+  const command = args[0]; // Get the command from the arguments
 
   switch (command) {
     case "insert":
@@ -384,11 +397,11 @@ async function runCLI() {
       printHelp();
       break;
     default:
-      printHelp();
+      printHelp(); // Show help if command is unrecognized
       break;
   }
 
-  // Close the database connection pool
+  // Close
   await pool.end();
 }
 
