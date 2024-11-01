@@ -5,11 +5,11 @@ const pool = new Pool({
   host: "localhost",
   database: "superhero_movie_rental",
   password: "5348",
-  port: 5432,
+  port: 5432 /**lol i had so much trouble with this cause for some reason i had the port set to 5433 and it took me about 2 hours to find that out hahaha */,
 });
 
 /**
- * Creates the database tables, if they do not already exist.
+ * Creates the database tables.
  */
 async function createTable() {
   try {
