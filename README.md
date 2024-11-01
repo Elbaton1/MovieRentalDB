@@ -61,45 +61,53 @@ To insert a new movie, use:
 ```bash
 node index.js insert "<title>" <year> "<genre>" "<director>"
 Example:
+```
 
-bash
+```bash
 Copy code
 node index.js insert "Inception" 2010 "Science Fiction" "Christopher Nolan"
 🔹 Show All Movies
 To display all movies in the database, use:
+```
 
-bash
+```bash
 Copy code
 node index.js show
 🔹 Update Customer Email
 To update a customer's email address, use:
+```
 
-bash
+```bash
 Copy code
 node index.js update <customer_id> "<new_email>"
 Example:
+```
 
-bash
+```bash
 Copy code
 node index.js update 1 "newemail@example.com"
 🔹 Remove a Customer
 To remove a customer from the database, use:
+```
 
-bash
+```bash
 Copy code
 node index.js remove <customer_id>
 Example:
+```
 
-bash
+```bash
 Copy code
 node index.js remove 1
 🔹 Help Command
 To view all available commands, use:
+```
 
-bash
+```bash
 Copy code
 node index.js
+```
+
 📌 Notes
 ✅ PostgreSQL Server: Make sure your PostgreSQL server is running and that you have created a database for the application to connect to.
 🔧 Database Configuration: Modify the database connection details in the code to match your PostgreSQL setup.
-```
