@@ -1,0 +1,63 @@
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> git log
+commit b4fb03ad71d96992bfa496baf6c5e9db4f220ad5 (HEAD -> main, origin/main)
+Author: Elbaton1 <Michael.o'brien@keyin.com>
+Date:   Fri Nov 1 01:17:18 2024 -0230
+
+    update index.js
+
+commit 3ba5026e7279e94ad987029d2c5d40ac7f887bf9
+Author: Elbaton1 <Michael.o'brien@keyin.com>
+Date:   Thu Oct 31 22:09:32 2024 -0230
+
+    updated 3nf_Explanation.txt
+
+commit 91104decfdfade31cf96f2d79d01aac23e0497ef
+Author: Elbaton1 <Michael.o'brien@keyin.com>
+Date:   Thu Oct 31 22:01:59 2024 -0230
+
+    update Testoutputs.txt and 3nf_Explanation.txt
+
+commit e3dac5a4995b10bc8c457f35a34f28287443c297
+Author: Elbaton1 <Michael.o'brien@keyin.com>
+Date:   Thu Oct 31 21:49:32 2024 -0230
+
+     created 3nf_Explanation.txt in docs folder
+
+commit 525e166684b4fb2f765f4d2e57a03b0c3f532eac
+Author: Elbaton1 <Michael.o'brien@keyin.com>
+Date:   Thu Oct 31 21:40:02 2024 -0230
+
+     updated testoutputs.txt
+
+commit ab0aca19b91a5731cc846b040d480929b3e3d20e
+Author: Elbaton1 <Michael.o'brien@keyin.com>
+Date:   Thu Oct 31 21:28:09 2024 -0230
+
+     created folder docs and added testoutputs.txt
+
+commit 495b2acc19dd7825ca8ca2a002492305b1701785
+Author: Elbaton1 <Michael.o'brien@keyin.com>
+Date:   Thu Oct 31 21:25:57 2024 -0230
+
+    updated index.js to expand the options in the menu for testing purposes
+
+commit fd71aec0b76bb0f3455e7ff98fe803fc753bdf82
+Author: Elbaton1 <Michael.o'brien@keyin.com>
+Date:   Thu Oct 31 19:53:39 2024 -0230
+
+    update index.js and package.json
+
+commit 6aad4d3196d64cd1dc03d9c99f304bb51fce79e7
+Author: Elbaton1 <Michael.o'brien@keyin.com>
+Date:   Thu Oct 31 18:49:31 2024 -0230
+
+    update package.json
+
+commit 7ca1cef3c65b489c63c199914afde4336da76146
+Author: Matthew English <matt.english4@gmail.com>
+Date:   Fri Oct 18 16:40:16 2024 -0230
+
+    Inital commit
+
+    - Initial commit of the base repository files
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> 
