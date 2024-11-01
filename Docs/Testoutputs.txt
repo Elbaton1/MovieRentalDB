@@ -1,37 +1,22 @@
+This file shows all the commands I typed into the terminal to test the app, along with the outputs from each command.
+
+Creating tables: The app checks and creates the necessary tables if they don't exist.
+Inserting movies: Adding new movies to the database using the insert command.
+Displaying movies: Showing all movies in the database with the show command.
+Updating customer emails: Changing a customer's email address with the update command.
+Inserting customers: Adding new customers using the insert-customer command.
+Displaying customers and emails: Listing all customers and their emails using show-customers and show-emails.
+Inserting rentals: Recording new movie rentals with the insert-rental command.
+Displaying rentals: Showing all rental records using the show-rentals command.
+Removing a customer: Deleting a customer and their rental history with the remove command.
+
+
+
+
+
 PS C:\Users\mobri\Documents\School> cd Movies
 PS C:\Users\mobri\Documents\School\Movies> cd database-midterm-base
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js
-Tables created successfully.
-Usage:
-  insert <title> <year> <genre> <director> - Insert a movie
-  show - Show all movies
-  update <customer_id> <new_email> - Update a customer's email
-  remove <customer_id> - Remove a customer from the database
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show
-Tables created successfully.
-Error fetching movies: error: permission denied for table movies
-    at C:\Users\mobri\Documents\School\Movies\database-midterm-base\node_modules\pg-pool\index.js:45:11
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async displayMovies (C:\Users\mobri\Documents\School\Movies\database-midterm-base\index.js:82:17)
-    at async runCLI (C:\Users\mobri\Documents\School\Movies\database-midterm-base\index.js:157:7) {
-  length: 200,
-  severity: 'ERROR',
-  code: '42501',
-  detail: undefined,
-  hint: undefined,
-  position: undefined,
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: undefined,
-  table: undefined,
-  column: undefined,
-  dataType: undefined,
-  constraint: undefined,
-  file: 'D:\\a\\postgresql-packaging-foundation\\postgresql-packaging-foundation\\postgresql-12.20\\src\\backend\\catalog\\aclchk.c',
-  line: '3492',
-  routine: 'aclcheck_error'
-}
+
 PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show
 >>
 Tables created successfully.
