@@ -1,3 +1,6 @@
+Michael obrien
+
+
 This file shows all the commands I typed into the terminal to test the app, along with the outputs from each command.
 
 Creating tables: The app checks and creates the necessary tables if they don't exist.
@@ -9,8 +12,6 @@ Displaying customers and emails: Listing all customers and their emails using sh
 Inserting rentals: Recording new movie rentals with the insert-rental command.
 Displaying rentals: Showing all rental records using the show-rentals command.
 Removing a customer: Deleting a customer and their rental history with the remove command.
-
-
 
 
 
