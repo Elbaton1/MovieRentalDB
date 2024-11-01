@@ -6,13 +6,13 @@ I made a database with three tables: Movies, Customers, and Rentals.
 Each table holds different information. In the Movies table, each movie has its own ID and details like title, year, genre, and director. 
 In the Customers table, each customer has an ID and their name, email, and phone number. 
 The Rentals table shows which customer rented which movie and when, each with its own rental ID.
-First, my database is in First Normal Form (1NF) because all the data is organized neatly. 
+First, my database is in First Normal Form (1NF) because all the data is organized neatly
 Each column has only one piece of information. For example, the title column only contains movie titles. 
 There are no columns with multiple values or repeating groups.
 Second, in Second Normal Form (2NF) because all the information in a table depends entirely on the primary key of that table. 
 In the Movies table, all the details like title and director depend on the movie ID. 
 In the Customers table, all the customer details depend on the customer ID. There are no partial dependencies on part of a composite key.
 In Third Normal Form (3NF) because there are no unnecessary relationships between columns. 
-Each column depends only on the primary key and not on other non-key columns. 
+Each column depends only on the primary key and not on other non-key columns
 For example, in the Movies table, the director information depends only on the movie ID, not on the genre or title. This means there are no transitive dependencies.(lol i learned that phrase from chat)
-So, my database is in 3NF because it's well-organized without duplicate or unnecessary data. and all things in each cat are depending on a single id. 
+So, my database is in 3NF because it's well-organized without duplicate or unnecessary data. and all things in each category are depending on a single id. 
