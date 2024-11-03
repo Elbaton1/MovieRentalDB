@@ -6,7 +6,7 @@ const pool = new Pool({
   host: "localhost",
   database: "superhero_movie_rental",
   password: "5348",
-  port: 5432, // Ensure this matches your PostgreSQL server's port
+  port: 5432,
 });
 
 /**
@@ -15,7 +15,7 @@ const pool = new Pool({
 async function createTable() {
   try {
     // Create Movies table
-    // had to use not null here but i dint have to in the pgadmin, why? i have no idea lol
+    // had to use not null here but i dont have to in the pgadmin, why? i have no idea lol
     await pool.query(`
       CREATE TABLE IF NOT EXISTS movies (
         movie_id SERIAL PRIMARY KEY,
@@ -268,7 +268,7 @@ function printHelp() {
       - Add a new rental. Dates are optional in YYYY-MM-DD format.
 
 📂 *Display Operations:*
-  • **show** 📽️
+  • *show* 📽️
       - Display all movies.
 
   • *show-customers*🧑‍🤝‍🧑
@@ -399,7 +399,7 @@ async function runCLI() {
       break;
 
     default:
-      printHelp(); // Show help if command is unrecognize
+      printHelp();
       break;
   }
 
