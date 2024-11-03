@@ -1,198 +1,184 @@
-Michael obrien
-
-
-This file shows all the commands I typed into the terminal to test the app, along with the outputs from each command.
-
-Creating tables: The app checks and creates the necessary tables if they don't exist.
-Inserting movies: Adding new movies to the database using the insert command.
-Displaying movies: Showing all movies in the database with the show command.
-Updating customer emails: Changing a customer's email address with the update command.
-Inserting customers: Adding new customers using the insert-customer command.
-Displaying customers and emails: Listing all customers and their emails using show-customers and show-emails.
-Inserting rentals: Recording new movie rentals with the insert-rental command.
-Displaying rentals: Showing all rental records using the show-rentals command.
-Removing a customer: Deleting a customer and their rental history with the remove command.
-
-
-
-PS C:\Users\mobri\Documents\School> cd Movies
-PS C:\Users\mobri\Documents\School\Movies> cd database-midterm-base
-
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show
->>
-Tables created successfully.
-Movies in the database:
-ID: 1, Title: Iron Man, Year: 2008, Genre: Action, Director: Jon Favreau
-ID: 2, Title: The Dark Knight, Year: 2008, Genre: Action, Director: Christopher Nolan
-ID: 3, Title: Avengers: Endgame, Year: 2019, Genre: Action, Director: Anthony Russo, Joe Russo
-ID: 4, Title: Spider-Man: Homecoming, Year: 2017, Genre: Action, Director: Jon Watts
-ID: 5, Title: Wonder Woman, Year: 2017, Genre: Action, Director: Patty Jenkins
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js insert "Suicide Squad" 2021 "Science Fiction" "James Gunn"       
-Tables created successfully.
-Movie "Suicide Squad" inserted successfully.
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show
-Tables created successfully.
-Movies in the database:
-ID: 1, Title: Iron Man, Year: 2008, Genre: Action, Director: Jon Favreau
-ID: 2, Title: The Dark Knight, Year: 2008, Genre: Action, Director: Christopher Nolan
-ID: 3, Title: Avengers: Endgame, Year: 2019, Genre: Action, Director: Anthony Russo, Joe Russo
-ID: 4, Title: Spider-Man: Homecoming, Year: 2017, Genre: Action, Director: Jon Watts
-ID: 5, Title: Wonder Woman, Year: 2017, Genre: Action, Director: Patty Jenkins
-ID: 6, Title: Suicide Squad, Year: 2021, Genre: Science Fiction, Director: James Gunn
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js update 1 "bruce.wayne@wayneenterprises.com"
->>
-Tables created successfully.
-Customer ID 1's email updated to bruce.wayne@wayneenterprises.com.
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show
-Tables created successfully.
-Movies in the database:
-ID: 1, Title: Iron Man, Year: 2008, Genre: Action, Director: Jon Favreau
-ID: 2, Title: The Dark Knight, Year: 2008, Genre: Action, Director: Christopher Nolan
-ID: 3, Title: Avengers: Endgame, Year: 2019, Genre: Action, Director: Anthony Russo, Joe Russo
-ID: 4, Title: Spider-Man: Homecoming, Year: 2017, Genre: Action, Director: Jon Watts
-ID: 5, Title: Wonder Woman, Year: 2017, Genre: Action, Director: Patty Jenkins
-ID: 6, Title: Suicide Squad, Year: 2021, Genre: Science Fiction, Director: James Gunn
 PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js
 >>
 Tables created successfully.
-Usage:
-  insert <title> <year> <genre> <director> - Insert a movie
-  show - Show all movies
-  update <customer_id> <new_email> - Update a customer's email
-  remove <customer_id> - Remove a customer from the database
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index .js
+
+📚 **Movie Rental System - Command Menu**
+
+🔧 *Insert Operations:*
+  • *insert* <title> <year> <genre> <director> 
+      - Add a new movie to the database.
+
+  • *insert-customer* <first_name> <last_name> <email> <phone_number> 
+      - Add a new customer to the database.
+  
+  • *insert-rental* <customer_id> <movie_id> [rental_date] [return_date] 
+      - Add a new rental. Dates are optional in YYYY-MM-DD format.
+
+📂 *Display Operations:*
+  • **show** 📽️
+      - Display all movies.
+
+  • *show-customers*🧑‍🤝‍🧑
+      - Display all customers.
+  
+  • *show-emails*📧
+      - Display all customer emails.
+  
+  • *show-rentals*📋
+      - Display all rentals.
+
+🔄 *Update Operations:*
+  • *update* <customer_id> <new_email> 
+      - Update a customer's email address.
+
+🗑️ *Remove Operations:*
+  • *remove* <customer_id> 
+      - Remove a customer and their rental history from the database.
+  
+  • *remove-rental* <rental_id> 
+      - Remove a specific rental from the database.
+
+
+  • *help*❓
+      - Show this help menu.
+
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show
+>> 
 Tables created successfully.
-Usage:
-  insert <title> <year> <genre> <director> - Insert a movie
-  insert-customer <first_name> <last_name> <email> <phone_number> - Insert a customer
-  insert-rental <customer_id> <movie_id> [rental_date] [return_date] - Insert a rental
-  show - Show all movies
-  show-customers - Show all customers
-  show-emails - Show all customer emails
-  show-rentals - Show all rentals
-  update <customer_id> <new_email> - Update a customer's email
-  remove <customer_id> - Remove a customer from the database
-  remove-rental <rental_id> - Remove a rental from the database
-  help - Show this help message
+
+Movies in the Database:
+ID: 1, Title: Iron Man, Year: 2008, Genre: Action, Director: Jon Favreau
+ID: 2, Title: The Dark Knight, Year: 2008, Genre: Action, Director: Christopher Nolan
+ID: 3, Title: Avengers: Endgame, Year: 2019, Genre: Action, Director: Anthony Russo, Joe Russo
+ID: 4, Title: Spider-Man: Homecoming, Year: 2017, Genre: Action, Director: Jon Watts
+ID: 5, Title: Wonder Woman, Year: 2017, Genre: Action, Director: Patty Jenkins
+ID: 6, Title: Suicide Squad, Year: 2021, Genre: Science Fiction, Director: James Gunn
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js insert "Black Panther" 2018 "Action" "Ryan Coogler"
+>>
+Tables created successfully.
+Movie "Black Panther" inserted successfully.
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show
+>>
+Tables created successfully.
+
+Movies in the Database:
+ID: 1, Title: Iron Man, Year: 2008, Genre: Action, Director: Jon Favreau
+ID: 2, Title: The Dark Knight, Year: 2008, Genre: Action, Director: Christopher Nolan
+ID: 3, Title: Avengers: Endgame, Year: 2019, Genre: Action, Director: Anthony Russo, Joe Russo
+ID: 4, Title: Spider-Man: Homecoming, Year: 2017, Genre: Action, Director: Jon Watts
+ID: 5, Title: Wonder Woman, Year: 2017, Genre: Action, Director: Patty Jenkins
+ID: 6, Title: Suicide Squad, Year: 2021, Genre: Science Fiction, Director: James Gunn
+ID: 7, Title: Black Panther, Year: 2018, Genre: Action, Director: Ryan Coogler
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-customers
+>>
+Tables created successfully.
+
+Customers in the Database:
+ID: 2, Name: Peter Parker, Email: peter.parker@example.com, Phone: 555-5678
+ID: 5, Name: Tony Stark, Email: tony.stark@example.com, Phone: 555-6789
+ID: 1, Name: Bruce Wayne, Email: bruce.wayne@wayneenterprises.com, Phone: 555-1234
+ID: 6, Name: Natasha Romanoff, Email: natasha.romanoff@example.com, Phone: 555-9876
+ID: 7, Name: Steve Rogers, Email: steve.rogers@example.com, Phone: 555-6543
+ID: 4, Name: Diana Prince, Email: diana.prince@themiscira.com, Phone: 555-4321
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js insert-customer "Stephen" "Strange" "dr.strange32@gmail.com" "555-0123" 
+Tables created successfully.
+Customer "Stephen Strange" inserted successfully.
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-customers
+>>
+Tables created successfully.
+
+Customers in the Database:
+ID: 2, Name: Peter Parker, Email: peter.parker@example.com, Phone: 555-5678
+ID: 5, Name: Tony Stark, Email: tony.stark@example.com, Phone: 555-6789
+ID: 1, Name: Bruce Wayne, Email: bruce.wayne@wayneenterprises.com, Phone: 555-1234
+ID: 6, Name: Natasha Romanoff, Email: natasha.romanoff@example.com, Phone: 555-9876
+ID: 7, Name: Steve Rogers, Email: steve.rogers@example.com, Phone: 555-6543
+ID: 4, Name: Diana Prince, Email: diana.prince@themiscira.com, Phone: 555-4321
+ID: 8, Name: Stephen Strange, Email: dr.strange32@gmail.com, Phone: 555-0123
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-rentals
+>>
+Tables created successfully.
+
+Rentals in the Database:
+Rental ID: 14, Customer: Tony Stark, Movie: Wonder Woman, Rented On: Wed Dec 04 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sat Dec 14 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 13, Customer: Peter Parker, Movie: Suicide Squad, Rented On: Tue Dec 03 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Dec 13 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 11, Customer: Natasha Romanoff, Movie: The Dark Knight, Rented On: Sun Dec 01 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Tue Dec 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 10, Customer: Tony Stark, Movie: Iron Man, Rented On: Wed Jan 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sat Jan 20 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 9, Customer: Diana Prince, Movie: Wonder Woman, Rented On: Tue Jan 09 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Jan 19 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 7, Customer: Peter Parker, Movie: Spider-Man: Homecoming, Rented On: Sun Jan 07 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Wed Jan 17 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 6, Customer: Bruce Wayne, Movie: Avengers: Endgame, Rented On: Sat Jan 06 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Tue Jan 16 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 5, Customer: Tony Stark, Movie: Spider-Man: Homecoming, Rented On: Fri Jan 05 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Mon Jan 15 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 4, Customer: Diana Prince, Movie: Avengers: Endgame, Rented On: Thu Jan 04 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sun Jan 14 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 2, Customer: Peter Parker, Movie: Iron Man, Rented On: Tue Jan 02 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Jan 12 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 1, Customer: Bruce Wayne, Movie: The Dark Knight, Rented On: Mon Jan 01 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Wed Jan 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js insert-rental 1 1 "2024-04-01" "2024-04-10"
+>>
+Tables created successfully.
+Rental for Customer ID 1 and Movie ID 1 inserted successfully.
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-rentals
+>>
+Tables created successfully.
+
+Rentals in the Database:
+Rental ID: 14, Customer: Tony Stark, Movie: Wonder Woman, Rented On: Wed Dec 04 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sat Dec 14 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 13, Customer: Peter Parker, Movie: Suicide Squad, Rented On: Tue Dec 03 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Dec 13 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 11, Customer: Natasha Romanoff, Movie: The Dark Knight, Rented On: Sun Dec 01 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Tue Dec 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 15, Customer: Bruce Wayne, Movie: Iron Man, Rented On: Mon Apr 01 2024 00:00:00 GMT-0230 (Newfoundland Daylight Saving Time), Returned On: Wed Apr 10 2024 00:00:00 GMT-0230 (Newfoundland Daylight Saving Time)
+Rental ID: 10, Customer: Tony Stark, Movie: Iron Man, Rented On: Wed Jan 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sat Jan 20 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 9, Customer: Diana Prince, Movie: Wonder Woman, Rented On: Tue Jan 09 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Jan 19 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 7, Customer: Peter Parker, Movie: Spider-Man: Homecoming, Rented On: Sun Jan 07 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Wed Jan 17 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 6, Customer: Bruce Wayne, Movie: Avengers: Endgame, Rented On: Sat Jan 06 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Tue Jan 16 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 5, Customer: Tony Stark, Movie: Spider-Man: Homecoming, Rented On: Fri Jan 05 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Mon Jan 15 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 4, Customer: Diana Prince, Movie: Avengers: Endgame, Rented On: Thu Jan 04 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sun Jan 14 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 2, Customer: Peter Parker, Movie: Iron Man, Rented On: Tue Jan 02 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Jan 12 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 1, Customer: Bruce Wayne, Movie: The Dark Knight, Rented On: Mon Jan 01 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Wed Jan 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-emails
+>>
+Tables created successfully.
+
+Customer Emails:
+• peter.parker@example.com
+• tony.stark@example.com
+• bruce.wayne@wayneenterprises.com
+• natasha.romanoff@example.com
+• steve.rogers@example.com
+• diana.prince@themiscira.com
+• dr.strange32@gmail.com
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js update 1 "spiderman@example.com"
+>>
+Tables created successfully.
+Customer ID 1's email updated to spiderman@example.com.
 PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-emails
 Tables created successfully.
+
 Customer Emails:
-peter.parker@example.com
-clark.kent@example.com
-diana.prince@example.com
-tony.stark@example.com
-bruce.wayne@wayneenterprises.com                                 node index.js show-customers
->> C:\Users\mobri\Documents\School\Movies\database-midterm-base>
-Tables created successfully.
-Customers in the database:
-ID: 2, Name: Peter Parker, Email: peter.parker@example.com, Phone: 555-5678
-ID: 3, Name: Clark Kent, Email: clark.kent@example.com, Phone: 555-8765
-ID: 4, Name: Diana Prince, Email: diana.prince@example.com, Phone: 555-4321
-ID: 5, Name: Tony Stark, Email: tony.stark@example.com, Phone: 555-6789
-ID: 1, Name: Bruce Wayne, Email: bruce.wayne@wayneenterprises.com, Phone: 555-1234
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js insert-customer "Natasha" "Romanoff" "natasha.romanoff@example.com" "555-9876"
-Tables created successfully.
-Customer "Natasha Romanoff" inserted successfully.
+• peter.parker@example.com
+• tony.stark@example.com
+• natasha.romanoff@example.com
+• steve.rogers@example.com
+• diana.prince@themiscira.com
+• dr.strange32@gmail.com
+• spiderman@example.com
 PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-customers
->> 
+>>
 Tables created successfully.
-Customers in the database:
+
+Customers in the Database:
 ID: 2, Name: Peter Parker, Email: peter.parker@example.com, Phone: 555-5678
-ID: 3, Name: Clark Kent, Email: clark.kent@example.com, Phone: 555-8765
-ID: 4, Name: Diana Prince, Email: diana.prince@example.com, Phone: 555-4321
 ID: 5, Name: Tony Stark, Email: tony.stark@example.com, Phone: 555-6789
-ID: 1, Name: Bruce Wayne, Email: bruce.wayne@wayneenterprises.com, Phone: 555-1234
 ID: 6, Name: Natasha Romanoff, Email: natasha.romanoff@example.com, Phone: 555-9876
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js insert-rental 6 2 "2024-12-01" "2024-12-10"
-Tables created successfully.
-Rental for Customer ID 6 and Movie ID 2 inserted successfully.
+ID: 7, Name: Steve Rogers, Email: steve.rogers@example.com, Phone: 555-6543
+ID: 4, Name: Diana Prince, Email: diana.prince@themiscira.com, Phone: 555-4321
+ID: 8, Name: Stephen Strange, Email: dr.strange32@gmail.com, Phone: 555-0123
+ID: 1, Name: Bruce Wayne, Email: spiderman@example.com, Phone: 555-1234
 PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-rentals
->> 
 Tables created successfully.
-Rentals in the database:
-Rental ID: 11, Customer: Natasha Romanoff, Movie: The Dark Knight, Rented On: Sun Dec 01 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Tue Dec 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 10, Customer: Tony Stark, Movie: Iron Man, Rented On: Wed Jan 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), ReturT-0330 (Newfoundland Standard Time), Returned On: Wed Jan 17 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 6, Customer: Bruce Wayne, Movie: Avengers: Endgame, Rented On: Sat Jan 06 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Tue Jan 16 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 5, Customer: Tony Stark, Movie: Spider-Man: Homecoming, Rented On: Fri Jan 05 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Mon Jan 15 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 4, Customer: Diana Prince, Movie: Avengers: Endgame, Rented On: Thu Jan 04 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sun Jan 14 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 3, Customer: Clark Kent, Movie: Wonder Woman, Rented On: Wed Jan 03 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sat Jan 13 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 2, Customer: Peter Parker, Movie: Iron Man, Rented On: Tue Jan 02 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Jan 12 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 1, Customer: Bruce Wayne, Movie: The Dark Knight, Rented On: Mon Jan 01 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Wed Jan 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js insert-rental 7 3 "2024-12-02" "2024-12-12"
-Tables created successfully.
-PS C:\Users\mobri\Documents\School> cd Movies
-PS C:\Users\mobri\Documents\School\Movies> cd database-midterm-base
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js insert-rental 5 5 "2024-12-04" "2024-12-14"
-Tables created successfully.
-Rental for Customer ID 5 and Movie ID 5 inserted successfully.
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-rentals
->> 
-Tables created successfully.
-Rentals in the database:
+
+Rentals in the Database:
 Rental ID: 14, Customer: Tony Stark, Movie: Wonder Woman, Rented On: Wed Dec 04 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sat Dec 14 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
 Rental ID: 13, Customer: Peter Parker, Movie: Suicide Squad, Rented On: Tue Dec 03 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Dec 13 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
 Rental ID: 11, Customer: Natasha Romanoff, Movie: The Dark Knight, Rented On: Sun Dec 01 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Tue Dec 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 10, Customer: Tony Stark, Movie: Iron Man, Rented On: Wed Jan 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sat Jan 20 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 9, Customer: Diana Prince, Movie: Wonder Woman, Rented On: Tue Jan 09 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Jan 19 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 8, Customer: Clark Kent, Movie: The Dark Knight, Rented On: Mon Jan 08 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Thu Jan 18 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 7, Customer: Peter Parker, Movie: Spider-Man: Homecoming, Rented On: Sun Jan 07 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Wed Jan 17 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 6, Customer: Bruce Wayne, Movie: Avengers: Endgame, Rented On: Sat Jan 06 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Tue Jan 16 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 5, Customer: Tony Stark, Movie: Spider-Man: Homecoming, Rented On: Fri Jan 05 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Mon Jan 15 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 4, Customer: Diana Prince, Movie: Avengers: Endgame, Rented On: Thu Jan 04 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sun Jan 14 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 3, Customer: Clark Kent, Movie: Wonder Woman, Rented On: Wed Jan 03 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sat Jan 13 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 2, Customer: Peter Parker, Movie: Iron Man, Rented On: Tue Jan 02 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Jan 12 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 1, Customer: Bruce Wayne, Movie: The Dark Knight, Rented On: Mon Jan 01 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Wed Jan 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js insert-customer "Steve" "Rogers" "steve.rogers@example.com" "555-6543"
->> 
-Tables created successfully.
-Customer "Steve Rogers" inserted successfully.
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-customers
->>
-Tables created successfully.
-Customers in the database:
-ID: 2, Name: Peter Parker, Email: peter.parker@example.com, Phone: 555-5678
-ID: 3, Name: Clark Kent, Email: clark.kent@example.com, Phone: 555-8765
-ID: 5, Name: Tony Stark, Email: tony.stark@example.com, Phone: 555-6789
-ID: 1, Name: Bruce Wayne, Email: bruce.wayne@wayneenterprises.com, Phone: 555-1234
-ID: 6, Name: Natasha Romanoff, Email: natasha.romanoff@example.com, Phone: 555-9876
-ID: 4, Name: Diana Prince, Email: diana.prince@themiscira.com, Phone: 555-4321
-ID: 7, Name: Steve Rogers, Email: steve.rogers@example.com, Phone: 555-6543
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js update 4 "diana.prince@themiscira.com"
->>
-Tables created successfully.
-Customer ID 4's email updated to diana.prince@themiscira.com.
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-customers
->>
-Tables created successfully.
-Customers in the database:
-ID: 2, Name: Peter Parker, Email: peter.parker@example.com, Phone: 555-5678
-ID: 3, Name: Clark Kent, Email: clark.kent@example.com, Phone: 555-8765
-ID: 5, Name: Tony Stark, Email: tony.stark@example.com, Phone: 555-6789
-ID: 1, Name: Bruce Wayne, Email: bruce.wayne@wayneenterprises.com, Phone: 555-1234
-ID: 6, Name: Natasha Romanoff, Email: natasha.romanoff@example.com, Phone: 555-9876
-ID: 7, Name: Steve Rogers, Email: steve.rogers@example.com, Phone: 555-6543
-ID: 4, Name: Diana Prince, Email: diana.prince@themiscira.com, Phone: 555-4321
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js remove 3
->>
-Tables created successfully.
-Customer ID 3 and their rental history have been removed.
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-customers
->>
-Tables created successfully.
-Customers in the database:
-ID: 2, Name: Peter Parker, Email: peter.parker@example.com, Phone: 555-5678
-ID: 5, Name: Tony Stark, Email: tony.stark@example.com, Phone: 555-6789
-ID: 1, Name: Bruce Wayne, Email: bruce.wayne@wayneenterprises.com, Phone: 555-1234
-ID: 6, Name: Natasha Romanoff, Email: natasha.romanoff@example.com, Phone: 555-9876
-ID: 7, Name: Steve Rogers, Email: steve.rogers@example.com, Phone: 555-6543
-ID: 4, Name: Diana Prince, Email: diana.prince@themiscira.com, Phone: 555-4321
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-rentals
->>
-Tables created successfully.
-Rentals in the database:
-Rental ID: 14, Customer: Tony Stark, Movie: Wonder Woman, Rented On: Wed Dec 04 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sat Dec 14 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 13, Customer: Peter Parker, Movie: Suicide Squad, Rented On: Tue Dec 03 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Dec 13 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-Rental ID: 11, Customer: Natasha Romanoff, Movie: The Dark Knight, Rented On: Sun Dec 01 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Tue Dec 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 15, Customer: Bruce Wayne, Movie: Iron Man, Rented On: Mon Apr 01 2024 00:00:00 GMT-0230 (Newfoundland Daylight Saving Time), Returned On: Wed Apr 10 2024 00:00:00 GMT-0230 (Newfoundland Daylight Saving Time)
 Rental ID: 10, Customer: Tony Stark, Movie: Iron Man, Rented On: Wed Jan 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sat Jan 20 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
 Rental ID: 9, Customer: Diana Prince, Movie: Wonder Woman, Rented On: Tue Jan 09 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Jan 19 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
 Rental ID: 7, Customer: Peter Parker, Movie: Spider-Man: Homecoming, Rented On: Sun Jan 07 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Wed Jan 17 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
@@ -201,4 +187,106 @@ Rental ID: 5, Customer: Tony Stark, Movie: Spider-Man: Homecoming, Rented On: Fr
 Rental ID: 4, Customer: Diana Prince, Movie: Avengers: Endgame, Rented On: Thu Jan 04 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sun Jan 14 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
 Rental ID: 2, Customer: Peter Parker, Movie: Iron Man, Rented On: Tue Jan 02 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Jan 12 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
 Rental ID: 1, Customer: Bruce Wayne, Movie: The Dark Knight, Rented On: Mon Jan 01 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Wed Jan 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
-PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> 
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js remove-rental 1
+>>
+Tables created successfully.
+Rental ID 1 has been removed.
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-rentals
+Tables created successfully.
+
+Rentals in the Database:
+Rental ID: 14, Customer: Tony Stark, Movie: Wonder Woman, Rented On: Wed Dec 04 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sat Dec 14 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 13, Customer: Peter Parker, Movie: Suicide Squad, Rented On: Tue Dec 03 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Dec 13 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 11, Customer: Natasha Romanoff, Movie: The Dark Knight, Rented On: Sun Dec 01 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Tue Dec 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 15, Customer: Bruce Wayne, Movie: Iron Man, Rented On: Mon Apr 01 2024 00:00:00 GMT-0230 (Newfoundland Daylight Saving Time), Returned On: Wed Apr 10 2024 00:00:00 GMT-0230 (Newfoundland Daylight Saving Time)
+Rental ID: 10, Customer: Tony Stark, Movie: Iron Man, Rented On: Wed Jan 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sat Jan 20 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 9, Customer: Diana Prince, Movie: Wonder Woman, Rented On: Tue Jan 09 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Jan 19 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 7, Customer: Peter Parker, Movie: Spider-Man: Homecoming, Rented On: Sun Jan 07 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Wed Jan 17 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 6, Customer: Bruce Wayne, Movie: Avengers: Endgame, Rented On: Sat Jan 06 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Tue Jan 16 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 5, Customer: Tony Stark, Movie: Spider-Man: Homecoming, Rented On: Fri Jan 05 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Mon Jan 15 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 4, Customer: Diana Prince, Movie: Avengers: Endgame, Rented On: Thu Jan 04 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sun Jan 14 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 2, Customer: Peter Parker, Movie: Iron Man, Rented On: Tue Jan 02 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Jan 12 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-customers
+Tables created successfully.
+
+Customers in the Database:
+ID: 2, Name: Peter Parker, Email: peter.parker@example.com, Phone: 555-5678
+ID: 5, Name: Tony Stark, Email: tony.stark@example.com, Phone: 555-6789
+ID: 6, Name: Natasha Romanoff, Email: natasha.romanoff@example.com, Phone: 555-9876
+ID: 7, Name: Steve Rogers, Email: steve.rogers@example.com, Phone: 555-6543
+ID: 4, Name: Diana Prince, Email: diana.prince@themiscira.com, Phone: 555-4321
+ID: 8, Name: Stephen Strange, Email: dr.strange32@gmail.com, Phone: 555-0123
+ID: 1, Name: Bruce Wayne, Email: spiderman@example.com, Phone: 555-1234
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js remove 1
+>>
+Tables created successfully.
+Customer ID 1 and their rental history have been removed.
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base>  node index.js show-customers
+Tables created successfully.
+
+Customers in the Database:
+ID: 2, Name: Peter Parker, Email: peter.parker@example.com, Phone: 555-5678
+ID: 5, Name: Tony Stark, Email: tony.stark@example.com, Phone: 555-6789
+ID: 6, Name: Natasha Romanoff, Email: natasha.romanoff@example.com, Phone: 555-9876
+ID: 7, Name: Steve Rogers, Email: steve.rogers@example.com, Phone: 555-6543
+ID: 4, Name: Diana Prince, Email: diana.prince@themiscira.com, Phone: 555-4321
+ID: 8, Name: Stephen Strange, Email: dr.strange32@gmail.com, Phone: 555-0123
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js show-rentals
+>>
+Tables created successfully.
+
+Rentals in the Database:
+Rental ID: 14, Customer: Tony Stark, Movie: Wonder Woman, Rented On: Wed Dec 04 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sat Dec 14 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 13, Customer: Peter Parker, Movie: Suicide Squad, Rented On: Tue Dec 03 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Dec 13 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 11, Customer: Natasha Romanoff, Movie: The Dark Knight, Rented On: Sun Dec 01 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Tue Dec 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 10, Customer: Tony Stark, Movie: Iron Man, Rented On: Wed Jan 10 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sat Jan 20 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 9, Customer: Diana Prince, Movie: Wonder Woman, Rented On: Tue Jan 09 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Jan 19 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 7, Customer: Peter Parker, Movie: Spider-Man: Homecoming, Rented On: Sun Jan 07 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Wed Jan 17 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 5, Customer: Tony Stark, Movie: Spider-Man: Homecoming, Rented On: Fri Jan 05 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Mon Jan 15 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 4, Customer: Diana Prince, Movie: Avengers: Endgame, Rented On: Thu Jan 04 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Sun Jan 14 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+Rental ID: 2, Customer: Peter Parker, Movie: Iron Man, Rented On: Tue Jan 02 2024 00:00:00 GMT-0330 (Newfoundland Standard Time), Returned On: Fri Jan 12 2024 00:00:00 GMT-0330 (Newfoundland Standard Time)
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base> node index.js help
+>>
+Tables created successfully.
+
+📚 **Movie Rental System - Command Menu**
+
+🔧 *Insert Operations:*
+  • *insert* <title> <year> <genre> <director>
+      - Add a new movie to the database.
+
+  • *insert-customer* <first_name> <last_name> <email> <phone_number>
+      - Add a new customer to the database.
+
+  • *insert-rental* <customer_id> <movie_id> [rental_date] [return_date]
+      - Add a new rental. Dates are optional in YYYY-MM-DD format.
+
+📂 *Display Operations:*
+  • **show** 📽️
+      - Display all movies.
+
+  • *show-customers*🧑‍🤝‍🧑
+      - Display all customers.
+
+  • *show-emails*📧
+      - Display all customer emails.
+
+  • *show-rentals*📋
+      - Display all rentals.
+
+🔄 *Update Operations:*
+  • *update* <customer_id> <new_email>
+      - Update a customer's email address.
+
+🗑️ *Remove Operations:*
+  • *remove* <customer_id>
+      - Remove a customer and their rental history from the database.
+
+  • *remove-rental* <rental_id>
+      - Remove a specific rental from the database.
+
+
+  • *help*❓
+      - Show this help menu.
+
+PS C:\Users\mobri\Documents\School\Movies\database-midterm-base>

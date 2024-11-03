@@ -15,6 +15,7 @@ const pool = new Pool({
 async function createTable() {
   try {
     // Create Movies table
+    // had to use not null here but i dint have to in the pgadmin, why? i have no idea lol
     await pool.query(`
       CREATE TABLE IF NOT EXISTS movies (
         movie_id SERIAL PRIMARY KEY,
@@ -257,41 +258,41 @@ function printHelp() {
 📚 **Movie Rental System - Command Menu**
 
 🔧 *Insert Operations:*
-  • **insert** <title> <year> <genre> <director> 🎬
+  • *insert* <title> <year> <genre> <director> 
       - Add a new movie to the database.
-  
-  • **insert-customer** <first_name> <last_name> <email> <phone_number> 👤
+
+  • *insert-customer* <first_name> <last_name> <email> <phone_number> 
       - Add a new customer to the database.
   
-  • **insert-rental** <customer_id> <movie_id> [rental_date] [return_date] 📅
+  • *insert-rental* <customer_id> <movie_id> [rental_date] [return_date] 
       - Add a new rental. Dates are optional in YYYY-MM-DD format.
 
 📂 *Display Operations:*
   • **show** 📽️
       - Display all movies.
-  
-  • **show-customers** 🧑‍🤝‍🧑
+
+  • *show-customers*🧑‍🤝‍🧑
       - Display all customers.
   
-  • **show-emails** 📧
+  • *show-emails*📧
       - Display all customer emails.
   
-  • **show-rentals** 📋
+  • *show-rentals*📋
       - Display all rentals.
 
 🔄 *Update Operations:*
-  • **update** <customer_id> <new_email> ✉️
+  • *update* <customer_id> <new_email> 
       - Update a customer's email address.
 
 🗑️ *Remove Operations:*
-  • **remove** <customer_id> 🗑️
+  • *remove* <customer_id> 
       - Remove a customer and their rental history from the database.
   
-  • **remove-rental** <rental_id> 🗑️
+  • *remove-rental* <rental_id> 
       - Remove a specific rental from the database.
 
-❓ *Miscellaneous:*
-  • **help** ❓
+
+  • *help*❓
       - Show this help menu.
 `);
 }
